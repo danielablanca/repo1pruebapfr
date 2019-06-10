@@ -17,5 +17,6 @@ export class AuthService {
         resolve(user)
        }).catch(err=> isRejected(err));
     });
+    //hjhbjdbcdc
   }
 }
