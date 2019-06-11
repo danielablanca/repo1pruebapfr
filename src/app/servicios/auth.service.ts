@@ -13,12 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private AFauth:AngularFireAuth /*, private db : AngularFirestore*/) { }
+  constructor(private AFauth:AngularFireAuth , private db : AngularFirestore) { }
 
   login(email:string,password:string){
 
     return new Promise((resolve,reject)=>{
       this.AFauth.auth.signInWithEmailAndPassword(email,password).then(user =>{
+        
         resolve(user)
        }).catch(err=> isRejected(err));
     });
@@ -26,21 +27,27 @@ export class AuthService {
    }
 
          
-    register(email:string ,password:string /*3 , nombre :string*/){
+    register(email:string ,password:string , nombre :string){
        return new Promise((resolve,reject)=>{
        this.AFauth.auth.createUserWithEmailAndPassword(email,password).then(res=>{
 
         
 
-       // const uid = res.user.uid;
-        //this.db.collection('users').doc(uid).set({
-         //nombrec:nombre,
-         //uiduser:uid
-       // })
+       const uid = res.user.uid;
+        this.db.collection('users').doc(uid).set({
+         nombrec:nombre,
+         uid:uid
+       })
      
        alert("registrado");
+
       }).catch(err=>reject(err))
-    })
+
+
+    });
    
+
+
+
   }
 }

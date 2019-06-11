@@ -10,7 +10,7 @@ import { UpperCasePipe } from '@angular/common';
 export class RegistroPage implements OnInit {
 
 public emailc:string ;
-//1 public nombrec:string ;
+public nombrec:string ;
 public passwordc: string;
 
   constructor(private auth:AuthService) { }
@@ -19,10 +19,16 @@ public passwordc: string;
   }
   OnSubmitRegister(){
 
-    this.auth.register(this.emailc ,this.passwordc /*2, this.nombrec*/).then(res=>{
+    this.auth.register(this.emailc ,this.passwordc , this.nombrec).then(res=>{
       console.log(this.auth)
     }).catch(err=> console.log(err))
   }
+
+
+ 
+
+
+
 
 
 }
