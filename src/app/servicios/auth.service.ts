@@ -3,12 +3,17 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import { promise } from 'protractor';
 import { resolve } from 'path';
 import { reject, isRejected } from 'q';
+import { UpperCasePipe } from '@angular/common';
+import {AngularFirestore} from "@angular/fire/firestore";
+import { Router } from '@angular/router';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private AFauth:AngularFireAuth) { }
+  constructor(private AFauth:AngularFireAuth /*, private db : AngularFirestore*/) { }
 
   login(email:string,password:string){
 
@@ -17,6 +22,25 @@ export class AuthService {
         resolve(user)
        }).catch(err=> isRejected(err));
     });
-    //hjhbjdbcdc
+    
+   }
+
+         
+    register(email:string ,password:string /*3 , nombre :string*/){
+       return new Promise((resolve,reject)=>{
+       this.AFauth.auth.createUserWithEmailAndPassword(email,password).then(res=>{
+
+        
+
+       // const uid = res.user.uid;
+        //this.db.collection('users').doc(uid).set({
+         //nombrec:nombre,
+         //uiduser:uid
+       // })
+     
+       alert("registrado");
+      }).catch(err=>reject(err))
+    })
+   
   }
 }

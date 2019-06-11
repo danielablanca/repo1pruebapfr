@@ -17,8 +17,10 @@
 
   <br>
   <ion-button (click)="OnSubmitLogin()" expand="block">Entrar</ion-button>
-<h3>email:{{email}}</h3>
-<h3>pass:{{password}}</h3>
+   <h3>email:{{email | uppercase}}</h3>
+   <h3>pass:{{password}}</h3>
+   <br>
+   <p text-center routerLink="/registro"> Crear cuenta </p>
 
 </ion-content>
 
