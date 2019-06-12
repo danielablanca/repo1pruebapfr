@@ -13,6 +13,9 @@ public emailc:string ;
 public nombrec:string ;
 public passwordc: string;
 
+  passwordType: string='password';
+  passwordShown:boolean=false;
+
   constructor(private auth:AuthService) { }
 
   ngOnInit() {
@@ -26,6 +29,19 @@ public passwordc: string;
 
 
  
+  public verPassword(){
+    if(this.passwordShown){
+      this.passwordShown=false;
+      this.passwordType='password';
+    }else{
+      this.passwordShown=true;
+      this.passwordType='text';
+    }
+  }
+
+
+
+  
 
 
 
