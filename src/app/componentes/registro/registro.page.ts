@@ -18,18 +18,18 @@ public passwordc: string;
 
   constructor(private auth:AuthService) { }
 
-  ngOnInit() {
-  }
-  OnSubmitRegister(){
+    ngOnInit() {}
+
+    OnSubmitRegister(){
 
     this.auth.register(this.emailc ,this.passwordc , this.nombrec).then(res=>{
       console.log(this.auth)
     }).catch(err=> console.log(err))
-  }
+    }
 
 
  
-  public verPassword(){
+   public verPassword(){
     if(this.passwordShown){
       this.passwordShown=false;
       this.passwordType='password';
@@ -39,6 +39,18 @@ public passwordc: string;
     }
   }
 
+    /*
+    public validarDatos() {
+      this.nombrec,this.emailc;
+      if(this.nombrec.length==0 || this.emailc.length==0){
+      alert("Campo vacio");
+      }else{      
+      }
+    }*/
+
+
+   
+
 
 
   
@@ -46,5 +58,5 @@ public passwordc: string;
 
 
 
+  }
 
-}
