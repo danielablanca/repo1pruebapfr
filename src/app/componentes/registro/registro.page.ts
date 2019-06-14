@@ -2,12 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { SrvRecord } from 'dns';
 import {AuthService} from "../../servicios/auth.service";
 import { UpperCasePipe } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
+formularioUsuario: FormGroup;
 
 public emailc:string ;
 public nombrec:string ;
@@ -16,7 +23,11 @@ public passwordc: string;
   passwordType: string='password';
   passwordShown:boolean=false;
 
-  constructor(private auth:AuthService) { }
+  constructor(
+    private auth:AuthService,
+    private alertCtrl: AlertController,
+    private fb: FormBuilder
+    ) {this.buildForm(); }
 
     ngOnInit() {}
 
@@ -39,14 +50,7 @@ public passwordc: string;
     }
   }
 
-    /*
-    public validarDatos() {
-      this.nombrec,this.emailc;
-      if(this.nombrec.length==0 || this.emailc.length==0){
-      alert("Campo vacio");
-      }else{      
-      }
-    }*/
+   
 
 
    

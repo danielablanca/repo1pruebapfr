@@ -6,12 +6,32 @@
 
 
 <ion-content>
+    <form [formGroup]="formularioUsuario" (ngSubmit)="saveData()" novalidate>
 
   <ion-item>
     <ion-label position="floating"> nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="nombrec" name="nombrec"
-      onkeyup="javascript:this.value=this.value.toUpperCase();" required> </ion-input>
+    <ion-input 
+    formControlName="nombrec"
+    type="text" 
+    placeholder="Nombre"
+    [(ngModel)]="nombrec" 
+    name="nombrec" 
+    onkeyup="javascript:this.value=this.value.toUpperCase();">
+    </ion-input>
   </ion-item>
+
+  <ion-item *ngIf="formularioUsuario.get('nombrec').errors && formularioUsuario.get('nombrec').dirty">
+      <p *ngIf="formularioUsuario.get('nombrec').hasError('required')" class="error">
+        El nombre es requerido.
+      </p>
+    </ion-item>
+
+
+
+
+
+
+
 
 
   <ion-item>
@@ -32,6 +52,6 @@
 
 
 
-
+</form>
 
 </ion-content>
